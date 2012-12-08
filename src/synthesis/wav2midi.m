@@ -1,5 +1,8 @@
 function wav2midi(fname, segment_length, tempo)
 
+% TODO:
+% * Specify classifier.
+
 if nargin < 3
   tempo = 80;
 end
