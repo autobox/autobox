@@ -1,0 +1,79 @@
+-----------------------------------------------------------------
+-------- GURLS - Grand Unified Regularized Least Squares --------
+-----------------------------------------------------------------
+
+
+Table of Contents
+=================
+
+- Introduction
+- Installation
+- Documentation
+- Quick and Dirty
+
+Introduction
+============
+
+GURLS - (Grand Unified Regularized Least Squares) is a MATLAB software package
+for training multiclass classifiers based on the Regularized Least Squares
+(RLS) loss function.
+
+- Automatic parameter selection.
+- Handle massive datasets.
+- Great modularity, each method can be used independently.
+- Wide range of optimization routines.
+
+Installation
+============
+
+Open MATLAB and execute:
+
+>> run('PACKAGE_ROOT/gurls/utils/gurls_install.m');
+
+where PACKAGEROOT is where you unzipped the GURLS package.
+This will add all the important directories to your path. Run 'savepath' if
+you want the installation to be permanent.
+
+Documentation
+=============
+
+- User's Guide:
+	A User's Guide with help files for each available method is available
+	in the gurls-manual.pdf file.
+
+- Developer's Guide
+	A simple developer's guides is available in the gurls-manual.pdf file.
+	GURLS is designed for easy expansion. Give it a try!
+
+- Demos
+	GURLS has exstensively commented demos in the "demo" subdirectory. 
+	Have a look, and run gurlsdemo.m. We feel this is the best way to learn how to use
+	these packages.
+
+- Further Documentation
+	* A collection of the most useful and common pipelines can be found here:
+	  https://github.com/CBCL/GURLS/wiki/User-Manual
+
+Quick and Dirty
+===============
+A straightforward example of GURLS uage can be found in gurls_helloworld.m, which employs the Quick and Dirty utilities.
+Below we describe more in details how to use them on your data.
+
+Put your training data in a n-by-d matrix X with each row being a data sample.
+Put the training labels in a y n-by-one vector. Let the labels go from 1 to T with T 
+being the number of classes.
+
+Run:
+
+>> opt = gurls_train(X,y);
+
+Put your test data in a n-by-d matrix Xte like above and your test labels in 
+a n-by-one vector yte. Let the labels go from 1 to T with T being the number of classes.
+
+Run: 
+
+>> [yhat, acc] = gurls_test(Xte,yte,opt)
+
+This will train a linear model in the dual space using leave-one-out cross validation.
+
+
